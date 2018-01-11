@@ -1,4 +1,4 @@
-#include "ZookeeperWrapper.h"
+#include "../ZookeeperWrapper.h"
 
 ZookeeperWrapper::ZookeeperWrapper():
     m_zkHandle(NULL)
@@ -34,13 +34,14 @@ int ZookeeperWrapper::createNodeSynchronously(const std::string &path, const std
     return status;
 }
 
-int ZookeeperWrapper::getNodeSynchronously(const std::string &path, std::string &value)
+int ZookeeperWrapper::getNodeSynchronously(const std::string &path, std::string &value, const watcher_fn &watcher)
 {
     if (!_isInitOK()) return ZINVALIDSTATE;
 
     char* buff = NULL;
     int buffLen = 0;
-    int status = zoo_get(m_zkHandle, path.c_str(), 0, buff, &buffLen, NULL);
+    void *nothingToPassToWatcher = NULL;
+    int status = zoo_wget(m_zkHandle, path.c_str(), watcher, nothingToPassToWatcher, buff, &buffLen, NULL);
     value = buff;
     return status;
 }

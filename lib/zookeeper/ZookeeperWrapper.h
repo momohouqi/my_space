@@ -1,6 +1,6 @@
 #ifndef ZOOKEEPER_H
 #define ZOOKEEPER_H
-#include "zookeeper.h"
+#include "zookeeper/zookeeper.h"
 #include <string>"
 
 class ZookeeperWrapper
@@ -29,7 +29,7 @@ public:
      */
     int createNodeSynchronously(const std::string& path, const std::string& value, int nodeType,
                                 std::string& returnNodePath);
-    int getNodeSynchronously(const std::string& path, std::string& value);
+    int getNodeSynchronously(const std::string& path, std::string& value, const watcher_fn &watcher);
 private:
     bool _isInitOK() const;
 private:
