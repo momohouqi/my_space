@@ -1,4 +1,7 @@
 cmake_minimum_required(VERSION 3.5)
 project(MySpace)
+list(APPEND CMAKE_INCLUDE_PATH ".")
+list(APPEND CMAKE_INCLUDE_PATH "/home/willchen/work/my_space")
+set(CMAKE_INCLUDE_PATH "/home/willchen/work/my_space")
 add_subdirectory(app)
 add_subdirectory(lib)

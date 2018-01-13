@@ -1,7 +1,7 @@
 #ifndef ZOOKEEPER_H
 #define ZOOKEEPER_H
 #include "zookeeper/zookeeper.h"
-#include <string>"
+#include <string>
 
 class ZookeeperWrapper
 {
@@ -18,7 +18,7 @@ public:
      * @param recv_timeout
      * @return success or not
      */
-    bool init(const string& host, int recv_timeout);
+    bool init(const std::string& host, int recv_timeout);
     /**
      * @brief createNodeSynchronously
      * @param path

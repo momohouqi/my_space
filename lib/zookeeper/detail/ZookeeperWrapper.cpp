@@ -10,7 +10,7 @@ ZookeeperWrapper::~ZookeeperWrapper()
     if (_isInitOK()) zookeeper_close(m_zkHandle);
 }
 
-bool ZookeeperWrapper::init(const string &host, int recv_timeout)
+bool ZookeeperWrapper::init(const std::string &host, int recv_timeout)
 {
     watcher_fn watcher_fun = NULL;
     m_zkHandle = zookeeper_init(host.c_str(), watcher_fun, recv_timeout, 0, 0, 0);
@@ -26,8 +26,8 @@ int ZookeeperWrapper::createNodeSynchronously(const std::string &path, const std
     acl.count = 1;
     acl.data = new ACL;
     */
-    ACL_vector ZOO_CREATOR_ALL_ACL;
-    char* returnPath[1024] = {0};
+    ACL_vector acl = ZOO_CREATOR_ALL_ACL;
+    char returnPath[1024] = {0};
     int status = zoo_create(m_zkHandle, path.c_str(), value.c_str(), value.length(), &acl,
                             nodeType, returnPath, sizeof(returnPath));
     returnNodePath = returnPath;
