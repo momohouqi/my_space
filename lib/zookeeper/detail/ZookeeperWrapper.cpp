@@ -38,10 +38,11 @@ int ZookeeperWrapper::getNodeSynchronously(const std::string &path, std::string 
 {
     if (!_isInitOK()) return ZINVALIDSTATE;
 
-    char* buff = NULL;
-    int buffLen = 0;
+    char buff[1024] = {0};
+    int buffLen = sizeof(buff);
     void *nothingToPassToWatcher = NULL;
-    int status = zoo_wget(m_zkHandle, path.c_str(), watcher, nothingToPassToWatcher, buff, &buffLen, NULL);
+    struct Stat stat;
+    int status = zoo_get(m_zkHandle, path.c_str(), 0, buff, &buffLen, &stat);
     value = buff;
     return status;
 }

@@ -1,4 +1,6 @@
 #include <iostream>
+#include <cstdio>
+#include <cstring>
 //#include "lib/zookeeper/ZookeeperWrapper.h"
 #include "../../lib/zookeeper/ZookeeperWrapper.h"
 
