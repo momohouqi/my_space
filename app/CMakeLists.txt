@@ -1,1 +1,2 @@
 add_subdirectory(appZookeeperWatcher)
+add_subdirectory(appCoroutine)
