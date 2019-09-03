@@ -1,5 +1,6 @@
 cmake_minimum_required(VERSION 3.5)
 project(MySpace)
+set(CMAKE_BUILD_TYPE "Debug")
 list(APPEND CMAKE_INCLUDE_PATH ".")
 list(APPEND CMAKE_INCLUDE_PATH "/home/willchen/work/my_space")
 set(CMAKE_INCLUDE_PATH "/home/willchen/work/my_space")
